@@ -11,6 +11,8 @@ const images = [
     "./img/05.webp",
 ]
 
+console.log(images);
+
 // creo una variabile per prendere lo slider dove andrò ad inserire le 5 immagini
 
 const slider = document.querySelector('.slider');
@@ -24,7 +26,7 @@ let slides = '';
 for (let i = 0; i < images.length; i++) {
     slides = `
     <div class="slide">
-    <img src="${images}" alt="character-${i}" >
+    <img src="${images[i]}" alt="character-${i}" >
     </div>
     `
 }
@@ -38,3 +40,9 @@ slider.innerHTML += slides;
 // - aggiungo alla slide con quell'index una classe active (con d-block), per renderla visibile
 let currentIndex = 0;
 document.querySelectorAll('.slide')[currentIndex].classList.add('active');
+
+// creo due variabili per prendere i bottoni su cui metterò un evento al click
+
+const prev = document.querySelector('.previous');
+const next = document.querySelector('.next');
+

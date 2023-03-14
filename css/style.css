@@ -8,7 +8,7 @@
     width: 700px;
     height: 400px;
     background-color: black;
-    
+    position: relative;
 }
 
 .slide {
@@ -26,3 +26,17 @@
 .active {
     display: block;
 }
+
+button {
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    color: black;
+    top: 50%;
+    transform: translate(0, -50%); 
+}
+
+.next {
+    right: 0;
+}
+

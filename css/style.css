@@ -8,6 +8,7 @@
     width: 700px;
     height: 400px;
     background-color: black;
+    display: none;
 }
 
 .slide {
@@ -20,4 +21,8 @@
     width: 100%;
     height: 400px;
     object-fit: cover;
+}
+
+.slide.active {
+    display: block;
 }

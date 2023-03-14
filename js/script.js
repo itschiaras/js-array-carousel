@@ -46,3 +46,21 @@ document.querySelectorAll('.slide')[currentIndex].classList.add('active');
 const prev = document.querySelector('.previous');
 const next = document.querySelector('.next');
 
+// applico l'evento "click" al bottone next
+
+next.addEventListener('click', goNext);
+
+// creo la funzione "goNext" indicando le istruzione per passare da una slide ad un'altra, rimuovendo la classe "active".
+
+function goNext() {
+    document.querySelectorAll('.slide')[currentIndex].classList.remove('active');
+    // condizione per ripartire dalla prima slide dopo essere arrivati all'ultima
+    if (currentIndex === images.lenght -1) {
+        currentIndex = 0;
+    } else {
+        currentIndex++;
+    }
+
+    // a questo punto l'immagine con il valore di currentIndex attuale prenderà la classe "active" e sarà visibile
+    document.querySelectorAll('.slide')[currentIndex].classList.add('active');
+}

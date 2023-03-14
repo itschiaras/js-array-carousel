@@ -16,30 +16,44 @@ console.log(images);
 // creo una variabile per prendere lo slider dove andrò ad inserire le 5 immagini
 
 const slider = document.querySelector('.slider');
+const thumbnails = document.querySelector('.thumbnails');
+console.log(thumbnails);
+
 
 // creo una variabile vuota dove andrò ad inserire un template literal
 
 let slides = '';
-
+let tnail = '';
 // creo un ciclo for in cui vi sarà la variabile slides con il suo template literal 
 
 for (let i = 0; i < images.length; i++) {
     slides += `
     <div class="slide">
     <img src="${images[i]}" alt="character-${i}" >
-    </div>
-    `
+    </div>`;
+    
+    tnail += `
+    <div class="thumbnail">
+        <img src="${images[i]}" alt="character-${i}">
+    </div>`
+    
 }
 
 // aggiungo alla variabile slider il contenuto della variabile slides
 
 slider.innerHTML += slides;
+thumbnails.innerHTML += tnail;
+
+
+
 
 // essendo tutte in d-none, le immagini non si vedranno, quindi:
 // - creo una variabile "currentIndex" con dentro l'indice dell'imagine che voglio mostrare per prima 
 // - aggiungo alla slide con quell'index una classe active (con d-block), per renderla visibile
 let currentIndex = 0;
 document.querySelectorAll(".slide")[currentIndex].classList.add('active');
+document.querySelectorAll(".thumbnail")[currentIndex].classList.add('active');
+
 
 
 
@@ -56,6 +70,7 @@ next.addEventListener('click', goNext);
 
 function goNext() {
     document.querySelectorAll(".slide")[currentIndex].classList.remove('active');
+    document.querySelectorAll(".thumbnail")[currentIndex].classList.remove('active');
     // condizione per ripartire dalla prima slide dopo essere arrivati all'ultima
     if (currentIndex === images.length -1) {
         currentIndex = 0;
@@ -66,6 +81,7 @@ function goNext() {
 
     // a questo punto l'immagine con il valore di currentIndex attuale prenderà la classe "active" e sarà visibile
     document.querySelectorAll(".slide")[currentIndex].classList.add('active');
+    document.querySelectorAll(".thumbnail")[currentIndex].classList.add('active');
 }
 
 
@@ -74,6 +90,7 @@ prev.addEventListener('click', goPrev);
 
 function goPrev() {
     document.querySelectorAll('.slide')[currentIndex].classList.remove('active');
+    document.querySelectorAll(".thumbnail")[currentIndex].classList.remove('active');
     if (currentIndex === 0) {
         currentIndex = images.length -1;
     } else {
@@ -81,5 +98,6 @@ function goPrev() {
     }
    
     document.querySelectorAll('.slide')[currentIndex].classList.add('active');
+    document.querySelectorAll(".thumbnail")[currentIndex].classList.add('active');
 
 }

@@ -4,11 +4,11 @@
 //creo array con 5 immagini all'interno
 
 const images = [
-    'img/01.webp',
-    'img/02.webp',
-    'img/03.webp',
-    'img/04.webp',
-    'img/05.webp'
+    "./img/01.webp",
+    "./img/02.webp",
+    "./img/03.webp",
+    "./img/04.webp",
+    "./img/05.webp",
 ]
 
 // creo una variabile per prendere lo slider dove andrò ad inserire le 5 immagini
@@ -16,6 +16,7 @@ const images = [
 const slider = document.querySelector('.slider');
 
 // creo una variabile vuota dove andrò ad inserire un template literal
+
 let slides = '';
 
 // creo un ciclo for in cui vi sarà la variabile slides con il suo template literal 
@@ -31,3 +32,9 @@ for (let i = 0; i < images.length; i++) {
 // aggiungo alla variabile slider il contenuto della variabile slides
 
 slider.innerHTML += slides;
+
+// essendo tutte in d-none, le immagini non si vedranno, quindi:
+// - creo una variabile "currentIndex" con dentro l'indice dell'imagine che voglio mostrare per prima 
+// - aggiungo alla slide con quell'index una classe active (con d-block), per renderla visibile
+let currentIndex = 0;
+document.querySelectorAll('.slide')[currentIndex].classList.add('active');

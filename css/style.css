@@ -46,27 +46,20 @@ button {
 .thumbnails {
     width: 700px;
     height: 100px;
-    
-    
 }
 
 .thumbnail {
     width: 100px;
     height: 100px;
     position: relative;
-    
-    
 }
 
-.thumbnail img {
+.thumbnails img {
     width: 100px;
     height: 100px;
     object-fit: cover;
     object-position: right;
     display: block;
-    
-
-
 }
  
 
@@ -87,3 +80,18 @@ button {
     background-color: transparent;
 }
 
+.titlebox {
+    z-index: 1000;
+    position:absolute;
+    bottom:0;
+    left:0;
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    color:rgb(255, 255, 255);
+    font-weight:bold;
+    font-size:3rem;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+}

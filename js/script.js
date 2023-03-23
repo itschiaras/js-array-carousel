@@ -4,11 +4,26 @@
 //creo array con 5 immagini all'interno
 
 const images = [
-    "./img/01.webp",
-    "./img/02.webp",
-    "./img/03.webp",
-    "./img/04.webp",
-    "./img/05.webp",
+    {
+        title: "Spiderman",
+        file: "01.webp"
+    },
+    {
+        title: "Ratchet & Clank",
+        file: "02.webp"
+    },
+    {
+        title: "Fortnite",
+        file: "03.webp"
+    },
+    {
+        title: "Stray",
+        file: "04.webp"
+    },
+    {
+        title: "MCU Avengers",
+        file: "05.webp"
+    },
 ]
 
 console.log(images);
@@ -20,30 +35,15 @@ const thumbnails = document.querySelector('.thumbnails');
 console.log(thumbnails);
 
 
-// creo una variabile vuota dove andrò ad inserire un template literal
+function carousel () {
+    images.forEach((image) => {
+        slider.innerHTML += `<div class="slide"> <img src="img/${image.file}" alt="${image.title}"> <div class="titlebox">${image.title}</div></div>`
+        thumbnails.innerHTML += `<div class="thumbnail"><img class="image-slide" src="img/${image.file}" alt="${image.title}"></div>`
 
-let slides = '';
-let tnail = '';
-// creo un ciclo for in cui vi sarà la variabile slides con il suo template literal 
-
-for (let i = 0; i < images.length; i++) {
-    slides += `
-    <div class="slide">
-    <img src="${images[i]}" alt="character-${i}" >
-    </div>`;
-    
-    tnail += `
-    <div class="thumbnail">
-        <img src="${images[i]}" alt="character-${i}">
-    </div>`
-    
+    })
 }
 
-// aggiungo alla variabile slider il contenuto della variabile slides
-
-slider.innerHTML += slides;
-thumbnails.innerHTML += tnail;
-
+carousel();
 
 
 
@@ -64,7 +64,7 @@ const next = document.querySelector('.next');
 
 // applico l'evento "click" al bottone next
 
-// next.addEventListener('click', goNext);
+next.addEventListener('click', goNext);
 
 // creo la funzione "goNext" indicando le istruzioni per passare da una slide ad un'altra, rimuovendo la classe "active".
 
@@ -84,12 +84,22 @@ function goNext() {
     document.querySelectorAll(".thumbnail")[currentIndex].classList.add('active');
 }
 
-const myInterval = setInterval(goNext(), 1000);
 
-function stopFunction () {
+
+
+let myInterval = setInterval(goNext(), 1000);
+
+
+function stopAutoPlay () {
     clearInterval(myInterval);
 }
-container.addEventListener('mouseover', stopFunction);
+
+// function startAutoPlay () {
+//     myInterval = setInterval(goNext(), 1000);
+// }
+
+slider.addEventListener('mouseover', stopAutoPlay);
+// slider.addEventListener('mouseout', startAutoPlay);
 
 
 

@@ -14,7 +14,7 @@ const images = [
 console.log(images);
 
 // creo una variabile per prendere lo slider dove andrò ad inserire le 5 immagini
-
+const container = document.querySelector('.wrapper');
 const slider = document.querySelector('.slider');
 const thumbnails = document.querySelector('.thumbnails');
 console.log(thumbnails);
@@ -64,7 +64,7 @@ const next = document.querySelector('.next');
 
 // applico l'evento "click" al bottone next
 
-next.addEventListener('click', goNext);
+// next.addEventListener('click', goNext);
 
 // creo la funzione "goNext" indicando le istruzioni per passare da una slide ad un'altra, rimuovendo la classe "active".
 
@@ -84,6 +84,14 @@ function goNext() {
     document.querySelectorAll(".thumbnail")[currentIndex].classList.add('active');
 }
 
+const myInterval = setInterval(goNext(), 1000);
+
+function stopFunction () {
+    clearInterval(myInterval);
+}
+container.addEventListener('mouseover', stopFunction);
+
+
 
 // creo la funzione "goPrev" indicando le istruzioni per andare alla slide precedente, rimuovendo la classe "active".
 prev.addEventListener('click', goPrev);
@@ -101,3 +109,9 @@ function goPrev() {
     document.querySelectorAll(".thumbnail")[currentIndex].classList.add('active');
 
 }
+
+slider.addEventListener('mouseover', ()=> clearInterval(autoplay));
+
+const autoplay = setInterval(goNext, 2000);
+
+

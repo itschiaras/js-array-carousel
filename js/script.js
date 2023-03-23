@@ -87,19 +87,19 @@ function goNext() {
 
 
 
-let myInterval = setInterval(goNext(), 1000);
+let myInterval;
 
 
 function stopAutoPlay () {
     clearInterval(myInterval);
 }
 
-// function startAutoPlay () {
-//     myInterval = setInterval(goNext(), 1000);
-// }
+function startAutoPlay () {
+    myInterval = setInterval(goNext, 1000);
+}
 
 slider.addEventListener('mouseover', stopAutoPlay);
-// slider.addEventListener('mouseout', startAutoPlay);
+slider.addEventListener('mouseout', startAutoPlay);
 
 
 
